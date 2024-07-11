@@ -5,6 +5,7 @@ import Tile from "../Tile/Tile";
 import { TileType } from "../Tile/type";
 import Overlay from "../Overlay/Overlay";
 import Winner from "../Winner/Winner";
+import NewGame from "../NewGame/NewGame";
 
 const Board = () => {
   const [tiles, setTiles] = useState<TileType[]>([]);
@@ -61,8 +62,9 @@ const Board = () => {
           return <Tile key={i} tile={tile} moveTile={moveTile} />;
         })}
         <Overlay />
-        <Winner tiles={tiles} reset={reset} />
       </div>
+      <Winner tiles={tiles} reset={reset} />
+      <NewGame reset={reset} />
     </div>
   );
 };
