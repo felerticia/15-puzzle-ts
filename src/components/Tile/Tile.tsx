@@ -3,6 +3,7 @@ import { TileType } from "./type";
 
 type TileProps = {
   tile: TileType;
+  moveTile: (tile: TileType) => void;
 };
 
 const getPosition = (index: number) => {
@@ -19,8 +20,12 @@ const getClassName = (tile: TileType) => {
   return c;
 };
 
-const Tile = ({ tile }: TileProps) => (
-  <div className={getClassName(tile)} style={getPosition(tile.index)}>
+const Tile = ({ tile, moveTile }: TileProps) => (
+  <div
+    className={getClassName(tile)}
+    style={getPosition(tile.index)}
+    onClick={() => moveTile(tile)}
+  >
     {tile.value === 16 ? "" : tile.value}
   </div>
 );
