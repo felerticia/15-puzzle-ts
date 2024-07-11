@@ -4,9 +4,10 @@ import { shuffle } from "../../helper";
 import Tile from "../Tile/Tile";
 import { TileType } from "../Tile/type";
 import Overlay from "../Overlay/Overlay";
+import Winner from "../Winner/Winner";
 
 const Board = () => {
-  const [tiles, setTiles] = useState<TileType[]>(shuffle());
+  const [tiles, setTiles] = useState<TileType[]>([]);
   const [animating, setAnimating] = useState(false);
 
   const moveTile = useCallback(
@@ -30,6 +31,10 @@ const Board = () => {
     },
     [tiles, animating]
   );
+
+  const reset = () => setTiles(shuffle());
+
+  useEffect(reset, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -56,6 +61,7 @@ const Board = () => {
           return <Tile key={i} tile={tile} moveTile={moveTile} />;
         })}
         <Overlay />
+        <Winner tiles={tiles} reset={reset} />
       </div>
     </div>
   );
