@@ -1,0 +1,21 @@
+.tile {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background: var(--tile);
+  font-size: 50px;
+  color: white;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: left 0.4s ease-in-out, top 0.4s ease-in-out;
+}
+.tile.correct {
+  background: var(--correct);
+}
+.tile.disabled {
+  pointer-events: none;
+  background-color: transparent;
+}

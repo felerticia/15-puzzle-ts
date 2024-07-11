@@ -6,9 +6,9 @@ describe("shuffle function", () => {
     expect(arr.length).toStrictEqual(16);
   });
   it("should have the number 16", () => {
-    expect(arr.includes(16)).toStrictEqual(true);
+    expect(arr.some((x) => x.value === 16)).toStrictEqual(true);
   });
   it("should not include number 0", () => {
-    expect(arr.includes(0)).toStrictEqual(false);
+    expect(arr.some((x) => x.value === 0)).toStrictEqual(false);
   });
 });
